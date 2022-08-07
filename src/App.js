@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Overlay from "./components/Overlay";
+import FormCard from "./components/formCard";
+import AddUser from "./components/AddUser";
+import "./App.css";
 
 function App() {
+  const [errMessage, setErrMessage] = useState("");
+  const [getData, setData] = useState([]);
+
+  const getOverlayErr = (message) => {
+    setErrMessage(message);
+  };
+
+  const getUserData = (data) => setData((prevState) => [...prevState, data]);
+
+  const changeOverlayState = () => setErrMessage("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {errMessage && <Overlay changeOverlayState={changeOverlayState} message={errMessage} />}
+      <FormCard getUserData={getUserData} getOverlayErr={getOverlayErr} />
+      <AddUser data={getData} />
     </div>
   );
 }

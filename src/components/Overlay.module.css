@@ -1,0 +1,33 @@
+.overlay {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  position: absolute;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-card {
+  width: 35em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.overlay-card__title {
+  background-color: blueviolet;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.overlay-card__err {
+  font-size: 1rem;
+}
+
+.overlay-button {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
